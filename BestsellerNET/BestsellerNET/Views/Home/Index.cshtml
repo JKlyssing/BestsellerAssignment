@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BestsellerNET.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+
+    
+
+<div class="productList">   
+    <p>Please go to /api where options include /products with optional ? name, id and brand, or /categories with optional ? searchCategoryName. </p>
+    @*Iterate products provided from product service through homeController*@
+    @foreach (Product product in Model)
+    { 
+        <div class="product" id="@(product.Id)">
+            <img width="200" src="@product.Images?.GetValue(0)"/>
+            <p>@(string.IsNullOrEmpty(product.Name.Dk) ? product.Name.En : product.Name.Dk)</p>   
+        </div>  
+    }
+</div>
